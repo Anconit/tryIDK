@@ -1,0 +1,1143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище PP2022Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brak">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDTovar" Type="int" Nullable="false" />
+          <Property Name="IDSklad" Type="int" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Director" Type="int" Nullable="false" />
+          <Property Name="ZamDirector" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanySklad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDCompany" Type="int" Nullable="false" />
+          <Property Name="IDSklad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deistviya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDRabotnik" Type="int" Nullable="false" />
+          <Property Name="IDDeistvie" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rabotniki">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IDType" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Zarplata" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RabotnikType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sklad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SkladRabotniki">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDSklad" Type="int" Nullable="false" />
+          <Property Name="IDRabotniki" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SkladTovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDTovar" Type="int" Nullable="false" />
+          <Property Name="IDSklad" Type="int" Nullable="false" />
+          <Property Name="Kolvo" Type="int" Nullable="false" />
+          <Property Name="NalichieBraka" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sostoyanie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeDeistvie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zacaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDZacazchik" Type="int" Nullable="false" />
+          <Property Name="IDRabotnik" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="DateZacaz" Type="date" Nullable="false" />
+          <Property Name="DateOzidaetsya" Type="date" Nullable="false" />
+          <Property Name="IDSostoyanie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zacazchik">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZacazTovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDZacaz" Type="int" Nullable="false" />
+          <Property Name="IDTovar" Type="int" Nullable="false" />
+          <Property Name="KolvoTovar" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Brak_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+          <End Role="Brak" Type="Self.Brak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Brak">
+              <PropertyRef Name="IDSklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brak_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Brak" Type="Self.Brak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Brak">
+              <PropertyRef Name="IDTovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Rabotniki">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Rabotniki1">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="ZamDirector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanySklad_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanySklad" Type="Self.CompanySklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CompanySklad">
+              <PropertyRef Name="IDCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanySklad_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+          <End Role="CompanySklad" Type="Self.CompanySklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CompanySklad">
+              <PropertyRef Name="IDSklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deistviya_Rabotniki">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="Deistviya" Type="Self.Deistviya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deistviya">
+              <PropertyRef Name="IDRabotnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deistviya_TypeDeistvie">
+          <End Role="TypeDeistvie" Type="Self.TypeDeistvie" Multiplicity="1" />
+          <End Role="Deistviya" Type="Self.Deistviya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeDeistvie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deistviya">
+              <PropertyRef Name="IDDeistvie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rabotniki_RabotnikType">
+          <End Role="RabotnikType" Type="Self.RabotnikType" Multiplicity="1" />
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RabotnikType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rabotniki">
+              <PropertyRef Name="IDType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkladRabotniki_Rabotniki">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="SkladRabotniki" Type="Self.SkladRabotniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SkladRabotniki">
+              <PropertyRef Name="IDRabotniki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkladRabotniki_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+          <End Role="SkladRabotniki" Type="Self.SkladRabotniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SkladRabotniki">
+              <PropertyRef Name="IDSklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkladTovar_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+          <End Role="SkladTovar" Type="Self.SkladTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SkladTovar">
+              <PropertyRef Name="IDSklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkladTovar_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="SkladTovar" Type="Self.SkladTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SkladTovar">
+              <PropertyRef Name="IDTovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacaz_Rabotniki">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="Zacaz" Type="Self.Zacaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zacaz">
+              <PropertyRef Name="IDRabotnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacaz_Sostoyanie">
+          <End Role="Sostoyanie" Type="Self.Sostoyanie" Multiplicity="1" />
+          <End Role="Zacaz" Type="Self.Zacaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sostoyanie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zacaz">
+              <PropertyRef Name="IDSostoyanie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacaz_Zacazchik">
+          <End Role="Zacazchik" Type="Self.Zacazchik" Multiplicity="1" />
+          <End Role="Zacaz" Type="Self.Zacaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zacazchik">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zacaz">
+              <PropertyRef Name="IDZacazchik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZacazTovar_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="ZacazTovar" Type="Self.ZacazTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZacazTovar">
+              <PropertyRef Name="IDTovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZacazTovar_Zacaz">
+          <End Role="Zacaz" Type="Self.Zacaz" Multiplicity="1" />
+          <End Role="ZacazTovar" Type="Self.ZacazTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zacaz">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZacazTovar">
+              <PropertyRef Name="IDZacaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PP2022ModelContainer">
+          <EntitySet Name="Brak" EntityType="Self.Brak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanySklad" EntityType="Self.CompanySklad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deistviya" EntityType="Self.Deistviya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rabotniki" EntityType="Self.Rabotniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RabotnikType" EntityType="Self.RabotnikType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sklad" EntityType="Self.Sklad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkladRabotniki" EntityType="Self.SkladRabotniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkladTovar" EntityType="Self.SkladTovar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sostoyanie" EntityType="Self.Sostoyanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeDeistvie" EntityType="Self.TypeDeistvie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zacaz" EntityType="Self.Zacaz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zacazchik" EntityType="Self.Zacazchik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZacazTovar" EntityType="Self.ZacazTovar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Brak_Sklad" Association="Self.FK_Brak_Sklad">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="Brak" EntitySet="Brak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brak_Tovar" Association="Self.FK_Brak_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="Brak" EntitySet="Brak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Rabotniki" Association="Self.FK_Company_Rabotniki">
+            <End Role="Rabotniki" EntitySet="Rabotniki" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Rabotniki1" Association="Self.FK_Company_Rabotniki1">
+            <End Role="Rabotniki" EntitySet="Rabotniki" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanySklad_Company" Association="Self.FK_CompanySklad_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanySklad" EntitySet="CompanySklad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanySklad_Sklad" Association="Self.FK_CompanySklad_Sklad">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="CompanySklad" EntitySet="CompanySklad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deistviya_Rabotniki" Association="Self.FK_Deistviya_Rabotniki">
+            <End Role="Rabotniki" EntitySet="Rabotniki" />
+            <End Role="Deistviya" EntitySet="Deistviya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deistviya_TypeDeistvie" Association="Self.FK_Deistviya_TypeDeistvie">
+            <End Role="TypeDeistvie" EntitySet="TypeDeistvie" />
+            <End Role="Deistviya" EntitySet="Deistviya" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rabotniki_RabotnikType" Association="Self.FK_Rabotniki_RabotnikType">
+            <End Role="RabotnikType" EntitySet="RabotnikType" />
+            <End Role="Rabotniki" EntitySet="Rabotniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkladRabotniki_Rabotniki" Association="Self.FK_SkladRabotniki_Rabotniki">
+            <End Role="Rabotniki" EntitySet="Rabotniki" />
+            <End Role="SkladRabotniki" EntitySet="SkladRabotniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkladRabotniki_Sklad" Association="Self.FK_SkladRabotniki_Sklad">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="SkladRabotniki" EntitySet="SkladRabotniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkladTovar_Sklad" Association="Self.FK_SkladTovar_Sklad">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="SkladTovar" EntitySet="SkladTovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkladTovar_Tovar" Association="Self.FK_SkladTovar_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="SkladTovar" EntitySet="SkladTovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacaz_Rabotniki" Association="Self.FK_Zacaz_Rabotniki">
+            <End Role="Rabotniki" EntitySet="Rabotniki" />
+            <End Role="Zacaz" EntitySet="Zacaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacaz_Sostoyanie" Association="Self.FK_Zacaz_Sostoyanie">
+            <End Role="Sostoyanie" EntitySet="Sostoyanie" />
+            <End Role="Zacaz" EntitySet="Zacaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacaz_Zacazchik" Association="Self.FK_Zacaz_Zacazchik">
+            <End Role="Zacazchik" EntitySet="Zacazchik" />
+            <End Role="Zacaz" EntitySet="Zacaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZacazTovar_Tovar" Association="Self.FK_ZacazTovar_Tovar">
+            <End Role="Tovar" EntitySet="Tovar" />
+            <End Role="ZacazTovar" EntitySet="ZacazTovar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZacazTovar_Zacaz" Association="Self.FK_ZacazTovar_Zacaz">
+            <End Role="Zacaz" EntitySet="Zacaz" />
+            <End Role="ZacazTovar" EntitySet="ZacazTovar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PP2022Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Brak">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDTovar" Type="Int32" Nullable="false" />
+          <Property Name="IDSklad" Type="Int32" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Sklad" Relationship="Self.FK_Brak_Sklad" FromRole="Brak" ToRole="Sklad" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_Brak_Tovar" FromRole="Brak" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Director" Type="Int32" Nullable="false" />
+          <Property Name="ZamDirector" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rabotniki" Relationship="Self.FK_Company_Rabotniki" FromRole="Company" ToRole="Rabotniki" />
+          <NavigationProperty Name="Rabotniki1" Relationship="Self.FK_Company_Rabotniki1" FromRole="Company" ToRole="Rabotniki" />
+          <NavigationProperty Name="CompanySklads" Relationship="Self.FK_CompanySklad_Company" FromRole="Company" ToRole="CompanySklad" />
+        </EntityType>
+        <EntityType Name="CompanySklad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDCompany" Type="Int32" Nullable="false" />
+          <Property Name="IDSklad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanySklad_Company" FromRole="CompanySklad" ToRole="Company" />
+          <NavigationProperty Name="Sklad" Relationship="Self.FK_CompanySklad_Sklad" FromRole="CompanySklad" ToRole="Sklad" />
+        </EntityType>
+        <EntityType Name="Deistviya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDRabotnik" Type="Int32" Nullable="false" />
+          <Property Name="IDDeistvie" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Rabotniki" Relationship="Self.FK_Deistviya_Rabotniki" FromRole="Deistviya" ToRole="Rabotniki" />
+          <NavigationProperty Name="TypeDeistvie" Relationship="Self.FK_Deistviya_TypeDeistvie" FromRole="Deistviya" ToRole="TypeDeistvie" />
+        </EntityType>
+        <EntityType Name="Rabotniki">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDType" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zarplata" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_Company_Rabotniki" FromRole="Rabotniki" ToRole="Company" />
+          <NavigationProperty Name="Companies1" Relationship="Self.FK_Company_Rabotniki1" FromRole="Rabotniki" ToRole="Company" />
+          <NavigationProperty Name="Deistviyas" Relationship="Self.FK_Deistviya_Rabotniki" FromRole="Rabotniki" ToRole="Deistviya" />
+          <NavigationProperty Name="RabotnikType" Relationship="Self.FK_Rabotniki_RabotnikType" FromRole="Rabotniki" ToRole="RabotnikType" />
+          <NavigationProperty Name="SkladRabotnikis" Relationship="Self.FK_SkladRabotniki_Rabotniki" FromRole="Rabotniki" ToRole="SkladRabotniki" />
+          <NavigationProperty Name="Zacazs" Relationship="Self.FK_Zacaz_Rabotniki" FromRole="Rabotniki" ToRole="Zacaz" />
+        </EntityType>
+        <EntityType Name="RabotnikType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rabotnikis" Relationship="Self.FK_Rabotniki_RabotnikType" FromRole="RabotnikType" ToRole="Rabotniki" />
+        </EntityType>
+        <EntityType Name="Sklad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Braks" Relationship="Self.FK_Brak_Sklad" FromRole="Sklad" ToRole="Brak" />
+          <NavigationProperty Name="CompanySklads" Relationship="Self.FK_CompanySklad_Sklad" FromRole="Sklad" ToRole="CompanySklad" />
+          <NavigationProperty Name="SkladRabotnikis" Relationship="Self.FK_SkladRabotniki_Sklad" FromRole="Sklad" ToRole="SkladRabotniki" />
+          <NavigationProperty Name="SkladTovars" Relationship="Self.FK_SkladTovar_Sklad" FromRole="Sklad" ToRole="SkladTovar" />
+        </EntityType>
+        <EntityType Name="SkladRabotniki">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDSklad" Type="Int32" Nullable="false" />
+          <Property Name="IDRabotniki" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rabotniki" Relationship="Self.FK_SkladRabotniki_Rabotniki" FromRole="SkladRabotniki" ToRole="Rabotniki" />
+          <NavigationProperty Name="Sklad" Relationship="Self.FK_SkladRabotniki_Sklad" FromRole="SkladRabotniki" ToRole="Sklad" />
+        </EntityType>
+        <EntityType Name="SkladTovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDTovar" Type="Int32" Nullable="false" />
+          <Property Name="IDSklad" Type="Int32" Nullable="false" />
+          <Property Name="Kolvo" Type="Int32" Nullable="false" />
+          <Property Name="NalichieBraka" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sklad" Relationship="Self.FK_SkladTovar_Sklad" FromRole="SkladTovar" ToRole="Sklad" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_SkladTovar_Tovar" FromRole="SkladTovar" ToRole="Tovar" />
+        </EntityType>
+        <EntityType Name="Sostoyanie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zacazs" Relationship="Self.FK_Zacaz_Sostoyanie" FromRole="Sostoyanie" ToRole="Zacaz" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Braks" Relationship="Self.FK_Brak_Tovar" FromRole="Tovar" ToRole="Brak" />
+          <NavigationProperty Name="SkladTovars" Relationship="Self.FK_SkladTovar_Tovar" FromRole="Tovar" ToRole="SkladTovar" />
+          <NavigationProperty Name="ZacazTovars" Relationship="Self.FK_ZacazTovar_Tovar" FromRole="Tovar" ToRole="ZacazTovar" />
+        </EntityType>
+        <EntityType Name="TypeDeistvie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Deistviyas" Relationship="Self.FK_Deistviya_TypeDeistvie" FromRole="TypeDeistvie" ToRole="Deistviya" />
+        </EntityType>
+        <EntityType Name="Zacaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDZacazchik" Type="Int32" Nullable="false" />
+          <Property Name="IDRabotnik" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <Property Name="DateZacaz" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOzidaetsya" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IDSostoyanie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rabotniki" Relationship="Self.FK_Zacaz_Rabotniki" FromRole="Zacaz" ToRole="Rabotniki" />
+          <NavigationProperty Name="Sostoyanie" Relationship="Self.FK_Zacaz_Sostoyanie" FromRole="Zacaz" ToRole="Sostoyanie" />
+          <NavigationProperty Name="Zacazchik" Relationship="Self.FK_Zacaz_Zacazchik" FromRole="Zacaz" ToRole="Zacazchik" />
+          <NavigationProperty Name="ZacazTovars" Relationship="Self.FK_ZacazTovar_Zacaz" FromRole="Zacaz" ToRole="ZacazTovar" />
+        </EntityType>
+        <EntityType Name="Zacazchik">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zacazs" Relationship="Self.FK_Zacaz_Zacazchik" FromRole="Zacazchik" ToRole="Zacaz" />
+        </EntityType>
+        <EntityType Name="ZacazTovar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDZacaz" Type="Int32" Nullable="false" />
+          <Property Name="IDTovar" Type="Int32" Nullable="false" />
+          <Property Name="KolvoTovar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tovar" Relationship="Self.FK_ZacazTovar_Tovar" FromRole="ZacazTovar" ToRole="Tovar" />
+          <NavigationProperty Name="Zacaz" Relationship="Self.FK_ZacazTovar_Zacaz" FromRole="ZacazTovar" ToRole="Zacaz" />
+        </EntityType>
+        <Association Name="FK_Brak_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+          <End Role="Brak" Type="Self.Brak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Brak">
+              <PropertyRef Name="IDSklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Brak_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="Brak" Type="Self.Brak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Brak">
+              <PropertyRef Name="IDTovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Rabotniki">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Rabotniki1">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="ZamDirector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanySklad_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanySklad" Type="Self.CompanySklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CompanySklad">
+              <PropertyRef Name="IDCompany" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanySklad_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+          <End Role="CompanySklad" Type="Self.CompanySklad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CompanySklad">
+              <PropertyRef Name="IDSklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deistviya_Rabotniki">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="Deistviya" Type="Self.Deistviya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deistviya">
+              <PropertyRef Name="IDRabotnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deistviya_TypeDeistvie">
+          <End Role="TypeDeistvie" Type="Self.TypeDeistvie" Multiplicity="1" />
+          <End Role="Deistviya" Type="Self.Deistviya" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeDeistvie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Deistviya">
+              <PropertyRef Name="IDDeistvie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rabotniki_RabotnikType">
+          <End Role="RabotnikType" Type="Self.RabotnikType" Multiplicity="1" />
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RabotnikType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rabotniki">
+              <PropertyRef Name="IDType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkladRabotniki_Rabotniki">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="SkladRabotniki" Type="Self.SkladRabotniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SkladRabotniki">
+              <PropertyRef Name="IDRabotniki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacaz_Rabotniki">
+          <End Role="Rabotniki" Type="Self.Rabotniki" Multiplicity="1" />
+          <End Role="Zacaz" Type="Self.Zacaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rabotniki">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zacaz">
+              <PropertyRef Name="IDRabotnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkladRabotniki_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+          <End Role="SkladRabotniki" Type="Self.SkladRabotniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SkladRabotniki">
+              <PropertyRef Name="IDSklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkladTovar_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="1" />
+          <End Role="SkladTovar" Type="Self.SkladTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SkladTovar">
+              <PropertyRef Name="IDSklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SkladTovar_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="SkladTovar" Type="Self.SkladTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SkladTovar">
+              <PropertyRef Name="IDTovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacaz_Sostoyanie">
+          <End Role="Sostoyanie" Type="Self.Sostoyanie" Multiplicity="1" />
+          <End Role="Zacaz" Type="Self.Zacaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sostoyanie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zacaz">
+              <PropertyRef Name="IDSostoyanie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZacazTovar_Tovar">
+          <End Role="Tovar" Type="Self.Tovar" Multiplicity="1" />
+          <End Role="ZacazTovar" Type="Self.ZacazTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tovar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZacazTovar">
+              <PropertyRef Name="IDTovar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zacaz_Zacazchik">
+          <End Role="Zacazchik" Type="Self.Zacazchik" Multiplicity="1" />
+          <End Role="Zacaz" Type="Self.Zacaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zacazchik">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zacaz">
+              <PropertyRef Name="IDZacazchik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZacazTovar_Zacaz">
+          <End Role="Zacaz" Type="Self.Zacaz" Multiplicity="1" />
+          <End Role="ZacazTovar" Type="Self.ZacazTovar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zacaz">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ZacazTovar">
+              <PropertyRef Name="IDZacaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PP2022Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Braks" EntityType="Self.Brak" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="CompanySklads" EntityType="Self.CompanySklad" />
+          <EntitySet Name="Deistviyas" EntityType="Self.Deistviya" />
+          <EntitySet Name="Rabotnikis" EntityType="Self.Rabotniki" />
+          <EntitySet Name="RabotnikTypes" EntityType="Self.RabotnikType" />
+          <EntitySet Name="Sklads" EntityType="Self.Sklad" />
+          <EntitySet Name="SkladRabotnikis" EntityType="Self.SkladRabotniki" />
+          <EntitySet Name="SkladTovars" EntityType="Self.SkladTovar" />
+          <EntitySet Name="Sostoyanies" EntityType="Self.Sostoyanie" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tovars" EntityType="Self.Tovar" />
+          <EntitySet Name="TypeDeistvies" EntityType="Self.TypeDeistvie" />
+          <EntitySet Name="Zacazs" EntityType="Self.Zacaz" />
+          <EntitySet Name="Zacazchiks" EntityType="Self.Zacazchik" />
+          <EntitySet Name="ZacazTovars" EntityType="Self.ZacazTovar" />
+          <AssociationSet Name="FK_Brak_Sklad" Association="Self.FK_Brak_Sklad">
+            <End Role="Sklad" EntitySet="Sklads" />
+            <End Role="Brak" EntitySet="Braks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Brak_Tovar" Association="Self.FK_Brak_Tovar">
+            <End Role="Tovar" EntitySet="Tovars" />
+            <End Role="Brak" EntitySet="Braks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Rabotniki" Association="Self.FK_Company_Rabotniki">
+            <End Role="Rabotniki" EntitySet="Rabotnikis" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Rabotniki1" Association="Self.FK_Company_Rabotniki1">
+            <End Role="Rabotniki" EntitySet="Rabotnikis" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanySklad_Company" Association="Self.FK_CompanySklad_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanySklad" EntitySet="CompanySklads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanySklad_Sklad" Association="Self.FK_CompanySklad_Sklad">
+            <End Role="Sklad" EntitySet="Sklads" />
+            <End Role="CompanySklad" EntitySet="CompanySklads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deistviya_Rabotniki" Association="Self.FK_Deistviya_Rabotniki">
+            <End Role="Rabotniki" EntitySet="Rabotnikis" />
+            <End Role="Deistviya" EntitySet="Deistviyas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deistviya_TypeDeistvie" Association="Self.FK_Deistviya_TypeDeistvie">
+            <End Role="TypeDeistvie" EntitySet="TypeDeistvies" />
+            <End Role="Deistviya" EntitySet="Deistviyas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rabotniki_RabotnikType" Association="Self.FK_Rabotniki_RabotnikType">
+            <End Role="RabotnikType" EntitySet="RabotnikTypes" />
+            <End Role="Rabotniki" EntitySet="Rabotnikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkladRabotniki_Rabotniki" Association="Self.FK_SkladRabotniki_Rabotniki">
+            <End Role="Rabotniki" EntitySet="Rabotnikis" />
+            <End Role="SkladRabotniki" EntitySet="SkladRabotnikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacaz_Rabotniki" Association="Self.FK_Zacaz_Rabotniki">
+            <End Role="Rabotniki" EntitySet="Rabotnikis" />
+            <End Role="Zacaz" EntitySet="Zacazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkladRabotniki_Sklad" Association="Self.FK_SkladRabotniki_Sklad">
+            <End Role="Sklad" EntitySet="Sklads" />
+            <End Role="SkladRabotniki" EntitySet="SkladRabotnikis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkladTovar_Sklad" Association="Self.FK_SkladTovar_Sklad">
+            <End Role="Sklad" EntitySet="Sklads" />
+            <End Role="SkladTovar" EntitySet="SkladTovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SkladTovar_Tovar" Association="Self.FK_SkladTovar_Tovar">
+            <End Role="Tovar" EntitySet="Tovars" />
+            <End Role="SkladTovar" EntitySet="SkladTovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacaz_Sostoyanie" Association="Self.FK_Zacaz_Sostoyanie">
+            <End Role="Sostoyanie" EntitySet="Sostoyanies" />
+            <End Role="Zacaz" EntitySet="Zacazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZacazTovar_Tovar" Association="Self.FK_ZacazTovar_Tovar">
+            <End Role="Tovar" EntitySet="Tovars" />
+            <End Role="ZacazTovar" EntitySet="ZacazTovars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zacaz_Zacazchik" Association="Self.FK_Zacaz_Zacazchik">
+            <End Role="Zacazchik" EntitySet="Zacazchiks" />
+            <End Role="Zacaz" EntitySet="Zacazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZacazTovar_Zacaz" Association="Self.FK_ZacazTovar_Zacaz">
+            <End Role="Zacaz" EntitySet="Zacazs" />
+            <End Role="ZacazTovar" EntitySet="ZacazTovars" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PP2022ModelContainer" CdmEntityContainer="PP2022Entities">
+          <EntitySetMapping Name="Braks">
+            <EntityTypeMapping TypeName="PP2022Model.Brak">
+              <MappingFragment StoreEntitySet="Brak">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDTovar" ColumnName="IDTovar" />
+                <ScalarProperty Name="IDSklad" ColumnName="IDSklad" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="PP2022Model.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="ZamDirector" ColumnName="ZamDirector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanySklads">
+            <EntityTypeMapping TypeName="PP2022Model.CompanySklad">
+              <MappingFragment StoreEntitySet="CompanySklad">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDCompany" ColumnName="IDCompany" />
+                <ScalarProperty Name="IDSklad" ColumnName="IDSklad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deistviyas">
+            <EntityTypeMapping TypeName="PP2022Model.Deistviya">
+              <MappingFragment StoreEntitySet="Deistviya">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDRabotnik" ColumnName="IDRabotnik" />
+                <ScalarProperty Name="IDDeistvie" ColumnName="IDDeistvie" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rabotnikis">
+            <EntityTypeMapping TypeName="PP2022Model.Rabotniki">
+              <MappingFragment StoreEntitySet="Rabotniki">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IDType" ColumnName="IDType" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Zarplata" ColumnName="Zarplata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RabotnikTypes">
+            <EntityTypeMapping TypeName="PP2022Model.RabotnikType">
+              <MappingFragment StoreEntitySet="RabotnikType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sklads">
+            <EntityTypeMapping TypeName="PP2022Model.Sklad">
+              <MappingFragment StoreEntitySet="Sklad">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkladRabotnikis">
+            <EntityTypeMapping TypeName="PP2022Model.SkladRabotniki">
+              <MappingFragment StoreEntitySet="SkladRabotniki">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDSklad" ColumnName="IDSklad" />
+                <ScalarProperty Name="IDRabotniki" ColumnName="IDRabotniki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkladTovars">
+            <EntityTypeMapping TypeName="PP2022Model.SkladTovar">
+              <MappingFragment StoreEntitySet="SkladTovar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDTovar" ColumnName="IDTovar" />
+                <ScalarProperty Name="IDSklad" ColumnName="IDSklad" />
+                <ScalarProperty Name="Kolvo" ColumnName="Kolvo" />
+                <ScalarProperty Name="NalichieBraka" ColumnName="NalichieBraka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sostoyanies">
+            <EntityTypeMapping TypeName="PP2022Model.Sostoyanie">
+              <MappingFragment StoreEntitySet="Sostoyanie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PP2022Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tovars">
+            <EntityTypeMapping TypeName="PP2022Model.Tovar">
+              <MappingFragment StoreEntitySet="Tovar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeDeistvies">
+            <EntityTypeMapping TypeName="PP2022Model.TypeDeistvie">
+              <MappingFragment StoreEntitySet="TypeDeistvie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zacazs">
+            <EntityTypeMapping TypeName="PP2022Model.Zacaz">
+              <MappingFragment StoreEntitySet="Zacaz">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDZacazchik" ColumnName="IDZacazchik" />
+                <ScalarProperty Name="IDRabotnik" ColumnName="IDRabotnik" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="DateZacaz" ColumnName="DateZacaz" />
+                <ScalarProperty Name="DateOzidaetsya" ColumnName="DateOzidaetsya" />
+                <ScalarProperty Name="IDSostoyanie" ColumnName="IDSostoyanie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zacazchiks">
+            <EntityTypeMapping TypeName="PP2022Model.Zacazchik">
+              <MappingFragment StoreEntitySet="Zacazchik">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZacazTovars">
+            <EntityTypeMapping TypeName="PP2022Model.ZacazTovar">
+              <MappingFragment StoreEntitySet="ZacazTovar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDZacaz" ColumnName="IDZacaz" />
+                <ScalarProperty Name="IDTovar" ColumnName="IDTovar" />
+                <ScalarProperty Name="KolvoTovar" ColumnName="KolvoTovar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="32da1b00e28342409b03a8ca833d0cd5" Name="Diagram1">
+        <EntityTypeShape EntityType="PP2022Model.Brak" Width="1.5" PointX="10.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.Company" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.CompanySklad" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.Deistviya" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.Rabotniki" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.RabotnikType" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.Sklad" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.SkladRabotniki" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.SkladTovar" Width="1.5" PointX="10.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.Sostoyanie" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.sysdiagram" Width="1.5" PointX="10.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.Tovar" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.TypeDeistvie" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.Zacaz" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.Zacazchik" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PP2022Model.ZacazTovar" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="PP2022Model.FK_Brak_Sklad" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Brak_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Company_Rabotniki" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Company_Rabotniki1" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_CompanySklad_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_CompanySklad_Sklad" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Deistviya_Rabotniki" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Deistviya_TypeDeistvie" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Rabotniki_RabotnikType" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_SkladRabotniki_Rabotniki" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Zacaz_Rabotniki" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_SkladRabotniki_Sklad" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_SkladTovar_Sklad" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_SkladTovar_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Zacaz_Sostoyanie" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_ZacazTovar_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_Zacaz_Zacazchik" ManuallyRouted="false" />
+        <AssociationConnector Association="PP2022Model.FK_ZacazTovar_Zacaz" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
